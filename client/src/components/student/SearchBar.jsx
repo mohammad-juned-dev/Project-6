@@ -18,7 +18,7 @@ navigate("/course-list/"+input)
       <img src={assets.search_icon} alt="search_icon" />
       <input onChange={e=>setInput(e.target.value)} value={input} className='placeholder:text-gray-400 focus:text-black outline:none focus:outline-none w-max' type="text" placeholder='Search for Courses' />
       </div>
-      <button className='bg-blue-600 text-white rounded-md px-5 py-2' type='submit'>Search</button>
+      <button className='bg-blue-600 hover:border-[1px] hover:border-black hover:text-blue-600 hover:bg-white text-white rounded-md px-5 py-2' type='submit'>Search</button>
     </form>
   )
 }
