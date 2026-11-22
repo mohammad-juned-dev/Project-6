@@ -3,7 +3,7 @@ import { AppContext } from "../../context/AppContext";
 import { assets } from "../../assets/assets";
 import { Link } from "react-router-dom";
 const CourseCard = ({ course }) => {
-  const { currency } = useContext(AppContext);
+  const { currency ,calculateRating} = useContext(AppContext);
   return (
     <Link
       to={"/course/" + course._id}
@@ -15,14 +15,14 @@ const CourseCard = ({ course }) => {
         <h1 className="self-start text-black text-[15px]">{course.courseTitle}</h1>
         <h1  className="self-start  text-black text-[15px]">{course.educator?.name ?? ""}</h1>
         <div className="flex gap-7">
-          <p className="text-black text-[15px]">4.5</p>
+          <p className="text-black text-[15px]">{calculateRating(course)}</p>
           <div className="flex -ml-5">
             {[...Array(5)].map((_, i) => (
-              <img key={i} src={assets.star} alt="star" />
+              <img key={i} src={i< Math.floor(calculateRating(course))?assets.star :assets.star_blank} alt="star" />
             ))}
           </div>
 
-          <p className=" text-gray-400 text-[15px]">22</p>
+          <p className=" text-gray-400 text-[15px]">{course.courseRatings.length}</p>
         </div>
         <p className="self-start text-black text-[15px]">
           {currency}
